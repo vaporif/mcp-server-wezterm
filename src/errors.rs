@@ -15,6 +15,6 @@ pub enum Error {
 impl From<Error> for McpError {
     fn from(err: Error) -> Self {
         tracing::error!("{err}");
-        McpError::internal_error(err.to_string(), None)
+        Self::internal_error(err.to_string(), None)
     }
 }

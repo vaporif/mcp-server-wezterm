@@ -7,7 +7,7 @@ use crate::wezterm;
 
 #[derive(Deserialize, JsonSchema)]
 pub struct SetWindowTitleParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Target window ID.
     pub window_id: Option<u32>,
@@ -34,7 +34,7 @@ pub async fn set_window_title(params: SetWindowTitleParams) -> Result<CallToolRe
 
 #[derive(Deserialize, JsonSchema)]
 pub struct RenameWorkspaceParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Current workspace name to rename.
     pub workspace: Option<String>,

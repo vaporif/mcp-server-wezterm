@@ -7,7 +7,7 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 
 /// Direction for pane navigation. Title-case variants match wezterm CLI expectations.
-/// No rename_all -- serde defaults match: "Up", "Down", "Left", "Right", "Next", "Prev".
+/// No `rename_all` -- serde defaults match: "Up", "Down", "Left", "Right", "Next", "Prev".
 #[derive(Deserialize, JsonSchema)]
 pub enum Direction {
     Up,
@@ -19,7 +19,7 @@ pub enum Direction {
 }
 
 impl Direction {
-    pub fn as_str(&self) -> &'static str {
+    pub const fn as_str(&self) -> &'static str {
         match self {
             Self::Up => "Up",
             Self::Down => "Down",
@@ -42,7 +42,7 @@ pub enum SplitDirection {
 }
 
 impl SplitDirection {
-    pub fn as_flag(&self) -> &'static str {
+    pub const fn as_flag(&self) -> &'static str {
         match self {
             Self::Left => "--left",
             Self::Right => "--right",
@@ -62,7 +62,7 @@ pub enum ZoomMode {
 }
 
 impl ZoomMode {
-    pub fn as_flag(&self) -> &'static str {
+    pub const fn as_flag(&self) -> &'static str {
         match self {
             Self::Zoom => "--zoom",
             Self::Unzoom => "--unzoom",

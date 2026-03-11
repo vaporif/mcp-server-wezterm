@@ -10,7 +10,7 @@ use crate::wezterm;
 
 #[derive(Deserialize, JsonSchema)]
 pub struct SplitPaneParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Where to place the new pane relative to the target. Default: bottom.
     pub direction: Option<SplitDirection>,
@@ -59,11 +59,11 @@ pub async fn split_pane(params: SplitPaneParams) -> Result<CallToolResult, Error
         move_pane_id_str = id.to_string();
         args.extend(["--move-pane-id", &move_pane_id_str]);
     }
-    if let Some(ref program) = params.program {
-        if !program.is_empty() {
-            args.push("--");
-            args.extend(program.iter().map(String::as_str));
-        }
+    if let Some(ref program) = params.program
+        && !program.is_empty()
+    {
+        args.push("--");
+        args.extend(program.iter().map(String::as_str));
     }
     let output = wezterm::exec(&args).await?;
     Ok(CallToolResult::success(vec![Content::text(output.trim())]))
@@ -73,7 +73,7 @@ pub async fn split_pane(params: SplitPaneParams) -> Result<CallToolResult, Error
 
 #[derive(Deserialize, JsonSchema)]
 pub struct SpawnParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Domain name.
     pub domain_name: Option<String>,
@@ -83,7 +83,7 @@ pub struct SpawnParams {
     pub new_window: Option<bool>,
     /// Working directory for the spawned program.
     pub cwd: Option<String>,
-    /// Workspace name for the new window. Requires new_window. Default: "default".
+    /// Workspace name for the new window. Requires `new_window`. Default: "default".
     pub workspace: Option<String>,
     /// Command and args to run instead of the default shell.
     pub program: Option<Vec<String>>,
@@ -113,11 +113,11 @@ pub async fn spawn(params: SpawnParams) -> Result<CallToolResult, Error> {
     if let Some(ref ws) = params.workspace {
         args.extend(["--workspace", ws]);
     }
-    if let Some(ref program) = params.program {
-        if !program.is_empty() {
-            args.push("--");
-            args.extend(program.iter().map(String::as_str));
-        }
+    if let Some(ref program) = params.program
+        && !program.is_empty()
+    {
+        args.push("--");
+        args.extend(program.iter().map(String::as_str));
     }
     let output = wezterm::exec(&args).await?;
     Ok(CallToolResult::success(vec![Content::text(output.trim())]))
@@ -127,7 +127,7 @@ pub async fn spawn(params: SpawnParams) -> Result<CallToolResult, Error> {
 
 #[derive(Deserialize, JsonSchema)]
 pub struct SendTextParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Text to send.
     pub text: String,
@@ -168,7 +168,7 @@ pub async fn activate_pane(params: ActivatePaneParams) -> Result<CallToolResult,
 
 #[derive(Deserialize, JsonSchema)]
 pub struct ActivatePaneDirectionParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Direction.
     pub direction: Direction,
@@ -206,7 +206,7 @@ pub async fn kill_pane(params: KillPaneParams) -> Result<CallToolResult, Error> 
 
 #[derive(Deserialize, JsonSchema)]
 pub struct AdjustPaneSizeParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Direction.
     pub direction: Direction,
@@ -235,7 +235,7 @@ pub async fn adjust_pane_size(params: AdjustPaneSizeParams) -> Result<CallToolRe
 
 #[derive(Deserialize, JsonSchema)]
 pub struct ZoomPaneParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Zoom mode. Default: "toggle".
     pub mode: Option<ZoomMode>,
@@ -258,7 +258,7 @@ pub async fn zoom_pane(params: ZoomPaneParams) -> Result<CallToolResult, Error> 
 
 #[derive(Deserialize, JsonSchema)]
 pub struct MovePaneToNewTabParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Target window. Omit for current window.
     pub window_id: Option<u32>,
@@ -268,9 +268,7 @@ pub struct MovePaneToNewTabParams {
     pub workspace: Option<String>,
 }
 
-pub async fn move_pane_to_new_tab(
-    params: MovePaneToNewTabParams,
-) -> Result<CallToolResult, Error> {
+pub async fn move_pane_to_new_tab(params: MovePaneToNewTabParams) -> Result<CallToolResult, Error> {
     let mut args = vec!["move-pane-to-new-tab"];
     let pane_id_str;
     if let Some(id) = params.pane_id {

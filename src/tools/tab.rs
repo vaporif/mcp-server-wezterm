@@ -7,7 +7,7 @@ use crate::wezterm;
 
 #[derive(Deserialize, JsonSchema)]
 pub struct ActivateTabParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Target tab ID.
     pub tab_id: Option<u32>,
@@ -15,7 +15,7 @@ pub struct ActivateTabParams {
     pub tab_index: Option<i32>,
     /// Relative offset. -1 = left, 1 = right, etc.
     pub tab_relative: Option<i32>,
-    /// Prevent wrapping when using tab_relative.
+    /// Prevent wrapping when using `tab_relative`.
     pub no_wrap: Option<bool>,
 }
 
@@ -50,7 +50,7 @@ pub async fn activate_tab(params: ActivateTabParams) -> Result<CallToolResult, E
 
 #[derive(Deserialize, JsonSchema)]
 pub struct SetTabTitleParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Target tab ID.
     pub tab_id: Option<u32>,

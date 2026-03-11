@@ -24,7 +24,7 @@ pub async fn list_clients() -> Result<CallToolResult, Error> {
 
 #[derive(Deserialize, JsonSchema)]
 pub struct GetTextParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Starting line. 0 = first screen line, negative = scrollback.
     pub start_line: Option<i32>,
@@ -68,7 +68,7 @@ pub async fn get_text(params: GetTextParams) -> Result<CallToolResult, Error> {
 
 #[derive(Deserialize, JsonSchema)]
 pub struct GetPaneDirectionParams {
-    /// Target pane ID. Defaults to the current pane (WEZTERM_PANE).
+    /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
     /// Direction.
     pub direction: Direction,
