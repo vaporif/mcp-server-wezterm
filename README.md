@@ -4,7 +4,7 @@ MCP server that exposes [WezTerm](https://wezfurlong.org/wezterm/) terminal cont
 
 ## Requirements
 
-- Node.js v22+
+- Node.js v24+
 - WezTerm with `wezterm cli` available on PATH
 
 ## Usage
