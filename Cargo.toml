@@ -12,6 +12,15 @@ schemars = "1"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
+[[bin]]
+name = "mock-wezterm"
+path = "src/bin/mock_wezterm.rs"
+
+[dev-dependencies]
+rmcp = { version = "1.1", features = ["client", "transport-child-process"] }
+serde_json = "1"
+tempfile = "3"
+
 [lints.clippy]
 all = "warn"
 pedantic = "warn"
