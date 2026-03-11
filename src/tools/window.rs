@@ -5,7 +5,7 @@ use serde::Deserialize;
 use crate::errors::Error;
 use crate::wezterm;
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct SetWindowTitleParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
@@ -32,7 +32,7 @@ pub async fn set_window_title(params: SetWindowTitleParams) -> Result<CallToolRe
     Ok(CallToolResult::success(vec![Content::text(output.trim())]))
 }
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct RenameWorkspaceParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,

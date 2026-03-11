@@ -8,7 +8,7 @@ use serde::Deserialize;
 
 /// Direction for pane navigation. Title-case variants match wezterm CLI expectations.
 /// No `rename_all` -- serde defaults match: "Up", "Down", "Left", "Right", "Next", "Prev".
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub enum Direction {
     Up,
     Down,
@@ -32,7 +32,7 @@ impl Direction {
 }
 
 /// Split direction. Lowercase because these map to CLI flags (--left, --right, etc.).
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum SplitDirection {
     Left,
@@ -53,7 +53,7 @@ impl SplitDirection {
 }
 
 /// Zoom mode. Lowercase because these map to CLI flags (--zoom, --unzoom, --toggle).
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum ZoomMode {
     Zoom,

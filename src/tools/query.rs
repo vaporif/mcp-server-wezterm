@@ -22,7 +22,7 @@ pub async fn list_clients() -> Result<CallToolResult, Error> {
 
 // ── get_text ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct GetTextParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
@@ -66,7 +66,7 @@ pub async fn get_text(params: GetTextParams) -> Result<CallToolResult, Error> {
 
 // ── get_pane_direction ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct GetPaneDirectionParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,

@@ -5,7 +5,7 @@ use serde::Deserialize;
 use crate::errors::Error;
 use crate::wezterm;
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct ActivateTabParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
@@ -48,7 +48,7 @@ pub async fn activate_tab(params: ActivateTabParams) -> Result<CallToolResult, E
     Ok(CallToolResult::success(vec![Content::text(output.trim())]))
 }
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct SetTabTitleParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,

@@ -8,7 +8,7 @@ use crate::wezterm;
 
 // ── split_pane ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct SplitPaneParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
@@ -71,7 +71,7 @@ pub async fn split_pane(params: SplitPaneParams) -> Result<CallToolResult, Error
 
 // ── spawn ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct SpawnParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
@@ -125,7 +125,7 @@ pub async fn spawn(params: SpawnParams) -> Result<CallToolResult, Error> {
 
 // ── send_text ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct SendTextParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
@@ -152,7 +152,7 @@ pub async fn send_text(params: SendTextParams) -> Result<CallToolResult, Error> 
 
 // ── activate_pane ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct ActivatePaneParams {
     /// Target pane ID to activate (focus).
     pub pane_id: u32,
@@ -166,7 +166,7 @@ pub async fn activate_pane(params: ActivatePaneParams) -> Result<CallToolResult,
 
 // ── activate_pane_direction ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct ActivatePaneDirectionParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
@@ -190,7 +190,7 @@ pub async fn activate_pane_direction(
 
 // ── kill_pane ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct KillPaneParams {
     /// Pane ID to kill.
     pub pane_id: u32,
@@ -204,7 +204,7 @@ pub async fn kill_pane(params: KillPaneParams) -> Result<CallToolResult, Error> 
 
 // ── adjust_pane_size ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct AdjustPaneSizeParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
@@ -233,7 +233,7 @@ pub async fn adjust_pane_size(params: AdjustPaneSizeParams) -> Result<CallToolRe
 
 // ── zoom_pane ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct ZoomPaneParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
@@ -256,7 +256,7 @@ pub async fn zoom_pane(params: ZoomPaneParams) -> Result<CallToolResult, Error> 
 
 // ── move_pane_to_new_tab ──
 
-#[derive(Deserialize, JsonSchema)]
+#[derive(Debug, Deserialize, JsonSchema)]
 pub struct MovePaneToNewTabParams {
     /// Target pane ID. Defaults to the current pane (`WEZTERM_PANE`).
     pub pane_id: Option<u32>,
