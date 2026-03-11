@@ -4,22 +4,8 @@ MCP server that exposes [WezTerm](https://wezfurlong.org/wezterm/) terminal cont
 
 ## Requirements
 
-- Node.js v18+
+- Node.js v22+
 - WezTerm with `wezterm cli` available on PATH
-
-## Install
-
-```bash
-npm install
-npm run build
-```
-
-### Nix
-
-```bash
-nix build    # build the package
-nix run      # run directly
-```
 
 ## Usage
 
@@ -30,10 +16,16 @@ Add to your MCP client configuration (e.g. Claude Code `~/.claude.json`):
   "mcpServers": {
     "wezterm": {
       "command": "npx",
-      "args": ["@vaporif/wezterm-mcp"]
+      "args": ["-y", "@vaporif/wezterm-mcp"]
     }
   }
 }
+```
+
+### Nix
+
+```bash
+nix run github:vaporif/wezterm-mcp
 ```
 
 ## Tools
