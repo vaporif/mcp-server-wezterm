@@ -30,7 +30,7 @@ Add to your MCP client configuration (e.g. Claude Code `~/.claude.json`):
   "mcpServers": {
     "wezterm": {
       "command": "npx",
-      "args": ["wezterm-mcp"]
+      "args": ["@vaporif/wezterm-mcp"]
     }
   }
 }
