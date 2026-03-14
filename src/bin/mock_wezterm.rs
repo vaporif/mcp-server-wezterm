@@ -26,7 +26,7 @@ fn main() {
         std::process::exit(1);
     }
 
-    let subcommand = args.get(1).map(String::as_str).unwrap_or("");
+    let subcommand = args.get(1).map_or("", String::as_str);
 
     match subcommand {
         "list" => {
@@ -42,10 +42,7 @@ fn main() {
         "get-text" => {
             print!("$ hello world\n$ ");
         }
-        "get-pane-direction" => {
-            print!("1");
-        }
-        "split-pane" => {
+        "get-pane-direction" | "split-pane" => {
             print!("1");
         }
         "spawn" => {
