@@ -44,6 +44,10 @@
         packages = [
           pkgs.wezterm
           pkgs.cargo-nextest
+          pkgs.cargo-deny
+          pkgs.just
+          pkgs.taplo
+          pkgs.typos
         ];
       };
     });
