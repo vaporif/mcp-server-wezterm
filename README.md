@@ -13,7 +13,7 @@ MCP server that exposes [WezTerm](https://wezfurlong.org/wezterm/) terminal cont
   "mcpServers": {
     "wezterm": {
       "command": "uvx",
-      "args": ["mcp-server-wezterm"]
+      "args": ["mcp-server-wezterm-rs"]
     }
   }
 }

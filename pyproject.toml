@@ -3,7 +3,7 @@ requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "mcp-server-wezterm"
+name = "mcp-server-wezterm-rs"
 description = "MCP server for WezTerm terminal"
 readme = "README.md"
 license = { file = "LICENSE" }
