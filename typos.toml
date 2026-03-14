@@ -1,0 +1,4 @@
+[default.extend-words]
+# wezterm-specific terms that aren't typos
+pane = "pane"
+panes = "panes"

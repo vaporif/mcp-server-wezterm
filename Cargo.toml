@@ -2,6 +2,13 @@
 name = "mcp-server-wezterm"
 version = "0.1.0"
 edition = "2024"
+description = "MCP server for WezTerm terminal"
+license = "MIT"
+repository = "https://github.com/vaporif/mcp-server-wezterm"
+keywords = ["mcp", "wezterm"]
+
+[features]
+test-mock = []
 
 [dependencies]
 rmcp = { version = "1.1", features = ["server", "transport-io"] }
@@ -15,6 +22,7 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 [[bin]]
 name = "mock-wezterm"
 path = "src/bin/mock_wezterm.rs"
+required-features = ["test-mock"]
 
 [dev-dependencies]
 rmcp = { version = "1.1", features = ["client", "transport-child-process"] }
@@ -25,3 +33,9 @@ tempfile = "3"
 all = "warn"
 pedantic = "warn"
 nursery = "warn"
+
+[profile.release]
+strip = true
+lto = true
+opt-level = "z"
+codegen-units = 1
