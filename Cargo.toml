@@ -11,7 +11,7 @@ keywords = ["mcp", "wezterm"]
 test-mock = []
 
 [dependencies]
-rmcp = { version = "1.1", features = ["server", "transport-io"] }
+rmcp = { version = "1.4", features = ["server", "transport-io"] }
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "process"] }
 thiserror = "2"
 serde = { version = "1", features = ["derive"] }
@@ -25,7 +25,7 @@ path = "src/bin/mock_wezterm.rs"
 required-features = ["test-mock"]
 
 [dev-dependencies]
-rmcp = { version = "1.1", features = ["client", "transport-child-process"] }
+rmcp = { version = "1.4", features = ["client", "transport-child-process"] }
 serde_json = "1"
 tempfile = "3"
 
